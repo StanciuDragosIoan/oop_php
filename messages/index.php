@@ -1,70 +1,78 @@
-<?php
- //MESSAGES
+<?php 
 
- class Person
- {
-     protected $name;
-     public function __construct($name)
-     {
-         $this->name = $name;
-     }
- }
-
-
- class Business
- {  
-    protected $staff;
-
-    //the business class needs an instance of the Staff class when it's initialized (so it can add the person it employs to the staff collection)
-    public function __construct(Staff $staff)
+    class Person
     {
-        $this->staff = $staff;
-
-    }
-    //the hire() method takes in as parameter only an instance of the Person class (this is called type hinting)
-    public function hire(Person $person){
-
-        //add person to the staff collection
-        $this->staff->add($person);
-    }
- }
-
- class Staff
- {  
-
-    protected $members = [];
-
-    public function __construct($members = [])
-    {
-        $this->members = $members;
+        public function __construct($name)
+        {
+            $this->name = $name;
+        }
     }
 
 
- 
-    public function add(Person $person)
+    class Business
     {   
-        //add the person to the members array
-        $this->members[] = $person;
+        protected $staff = [];
+
+        public function __construct(Staff $staff)
+        {
+            $this->staff = $staff;
+        }
+
+        //type hinting -> hire() can only be used with a Person object
+        public function hire(Person $person)
+        {   
+            //add person to the staff
+            $this->staff->add($person);
+        }
+
+
+        public function getStaffMembers()
+        {
+            return $this->staff->members();
+        }
     }
- }
 
- $jeffrey = new Person('Jeffrey');
+    class Staff
+    {   
+        protected $members = [];
+        //set $members default to empty array (but $members can also be passed through as argument when instantiating a new Staff obj)
+        public function __construct($members =[])
+        {
+            $this->members[] = $members;
+        }
 
- $staff = new Staff(($jeffrey));
+        public function add (Person $person)
+        {
+            array_push($this->members, $person);
+        }
+
+        public function members()
+        {
+            return $this->members;
+        }
+    }
+
+
+
+
+//the business will hire a person and the person will join the staff;
+
+
+//create person
+$jeffrey = new Person('Jeffrey Way');
+ 
+//pass $jeffrey as param when instantiating the Staff class (intended behaviour expressed in the Staff constructor method)
+$staff = new Staff($jeffrey);
+
+$laracasts = new Business($staff);
+
+ 
+$laracasts->hire(new Person('Jane Doe'));
 
  
 
- $laracasts = new Business($staff);
+// var_dump($staff); die();
 
+//replaced the simple staff dumping with a method of Business class which gets all the staff members;
+var_dump($laracasts->getStaffMembers());
 
- //hire some1 else
-//  $jane = new Person('Jane Doe');
-//  $laracasts->hire($jane);
-$laracasts->hire(new Person('Jane'));
-
-// now staff has 1 member ($jeffrey);
- var_dump($staff);
-
-
- //the fact that a class requires an instance of another class means it has a dependency; Also the idea of loosely/tight coupled classes
- //is based on dependencies (how many dependencies does a class have and how tightly/loosely coupled are they? );
