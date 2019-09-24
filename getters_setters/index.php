@@ -1,8 +1,15 @@
 <?php
-//getters and setters add a bit of security and validation for data manipulation in our classes;
+/*
+    Getters and setters add a bit of security and validation for data manipulation 
+    in our classes;
 
-//we can enfore behaviour in our app (business logic behaviour) through getters and setters (like making sure age is 
-//at least 18 or that age is returned as days number hence * 365)
+    We can enfore behaviour in our app (business logic behaviour) through getters and 
+    setters (like making sure age is at least 18 or that age is returned as days 
+    number hence * 365)
+*/
+
+
+ 
 
 
 class Person
@@ -18,9 +25,7 @@ class Person
 
     //getter
     public function getAge(){
-
         return $this->age * 365;
-
     }
 
 
@@ -38,9 +43,15 @@ class Person
 
 $john = new Person('John Doe');
 
-// $john->$age = 30;    //note that as $age is public, we can still modify it directly too (and not only through the setter)
-//this is an issue as we want our app to NOT allow setting properties like $age directly, and not through a method;
+$john->age = 30;    
 
+/*
+    Note that as $age is public, we can still modify it directly too 
+    (and not only through the setter) this is an issue as we want our app to NOT allow 
+    setting properties like $age directly, and force the user to do it through a method;
+
+    We would need to make the $age protected in order to do that 
+*/
 $john->setAge(30);
 var_dump($john->getAge());
 

@@ -40,10 +40,13 @@
     var_dump($john->getAge());
 
 
-    //through getters and setters, we can manipulate private and protected data (properties), through a 'public interface' (note that the getAge and setAge methods are public);
-    //now the direct manipulation of properties like $john->age will throw an error, and force the user to use the public interface;
+/* 
+    through getters and setters, we can manipulate private and protected data (properties), 
+    through a 'public interface' (note that the getAge and setAge methods are public);
 
-
+    Now the direct manipulation of properties like $john->age will throw an error, and 
+    force the user to use the public interface (the setAge() method);
+*/
 
 
     // #--------------------------------------------------------------------------------
@@ -80,5 +83,9 @@
 
     // $switch->connect();
 
-    // //note that protected or private methods cannot be accessed from outside the class (so instances of LightSwitch cannot access them )
-    // // but if we extend the LightSwitch class, instances of the inheriting class CAN access the protected methods (private ones can only be accessed from the LightSwitch class)
+/*
+    note that protected or private methods cannot be accessed from outside the class 
+    (so instances of LightSwitch cannot access them )
+    but if we extend the LightSwitch class, instances of the inheriting class CAN access 
+    the protected methods (private ones can only be accessed from the LightSwitch class)
+*/    
