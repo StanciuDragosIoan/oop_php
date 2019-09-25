@@ -35,7 +35,7 @@
     class Staff
     {   
         protected $members = [];
-        //set $members default to empty array (but $members can also be passed through as argument when instantiating a new Staff obj)
+       
         public function __construct($members =[])
         {
             $this->members[] = $members;
@@ -52,6 +52,11 @@
         }
     }
 
+/*
+     Note how we set $members default to empty array (but $members can also be passed 
+     through as argument when instantiating a new Staff obj)
+
+*/
 
 
 
@@ -61,7 +66,11 @@
 //create person
 $jeffrey = new Person('Jeffrey Way');
  
-//pass $jeffrey as param when instantiating the Staff class (intended behaviour expressed in the Staff constructor method)
+/*
+    pass $jeffrey as param when instantiating the Staff class (intended behaviour expressed
+    in the Staff constructor method)
+*/
+
 $staff = new Staff($jeffrey);
 
 $laracasts = new Business($staff);

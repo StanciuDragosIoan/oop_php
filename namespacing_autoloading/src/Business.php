@@ -4,7 +4,10 @@ namespace Acme;
 
 use Acme\Users\Person;
 
-//we can typehint a class that is not part of the current namespace by preceding it with \ -> \Person or we can use the syntax above;
+/*
+    we can typehint a class that is not part of the current namespace by preceding it
+    with \ -> \Person or we can use the syntax above;
+*/
 
 class Business
 {   

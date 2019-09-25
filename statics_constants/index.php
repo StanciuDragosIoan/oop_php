@@ -1,5 +1,10 @@
 <?php
-//STATIC METHODS (they are not dynamic like the other ones - they don't need to reach into other classes, they just accept some input and return some output)
+//STATIC METHODS 
+
+/*
+    they are not dynamic like the other ones - they don't need to reach into
+    other classes, they just accept some input and return some output)
+*/
 
 /*
 class Math
@@ -18,6 +23,7 @@ class Math
     }
 }
 */
+
 // $math = new Math;
 
 // var_dump($math->add(2,3));
@@ -30,9 +36,9 @@ class Math
 
 
 
-
+/*
 //STATIC PROPERTIES
-/*class Person 
+ class Person 
 {   
     //it's a bad idea to declare static properties in a class (as they are shared between class instances)
     // public static $age = 1;
@@ -75,10 +81,11 @@ $jane->haveBirthday(); //age is 4   if $age static
 echo $jane->age();
 // echo Person::$age;
 
+*/
 
 
 //MOST OF the time static properties/methods are not the right choice;
-*/
+ 
 
 
 
@@ -106,7 +113,10 @@ echo $jane->age();
 
 //EXAMPLES WHEN STATIC PROPS/METHS ARE A GOOD CHOICE:
 
-///static functions are namespaced but they are globally accessible functions (e. g. string manip functions from laravel classes)
+/*
+    static functions are namespaced but they are globally accessible functions 
+    (e. g. string manip functions from laravel classes)
+*/
 
 // public static function lower($str)
 // {
@@ -115,7 +125,9 @@ echo $jane->age();
 
 // echo lower('TEST');
 
-//they are ok to be used as pure functions (that only take some input and return some output without affecting the surroundings)
-
+/*
+    they are ok to be used as pure functions (that only take some input and return
+    some output without affecting the surroundings)
+*/
 
 //in principle we should not use static methods/props 

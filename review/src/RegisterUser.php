@@ -1,5 +1,5 @@
 <?php
- namespace Acme2;
+namespace Acme2;
 //registers a user
 class RegisterUser
 {
